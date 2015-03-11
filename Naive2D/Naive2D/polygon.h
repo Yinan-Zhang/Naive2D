@@ -147,7 +147,7 @@ namespace N2D {
         // Otherwise, please use "naive_distance_to" method
         double distance_to( const Polygon& other ) const
         {
-            if( this->gjk_intersects(other) ) return 0.0;
+            if( this->intersects(other) ) return 0.0;
             return GJK::distance(this->vertices, other.vertices);
         }
         

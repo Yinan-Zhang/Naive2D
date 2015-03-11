@@ -91,7 +91,7 @@ namespace N2D
         double linfty() const { return std::max(fabs(x),fabs(y)); }
     };
     
-#define INFINITE_POINT geometry::v2(MAX_DOUBLE, MAX_DOUBLE)
+#define INFINITE_POINT N2D::v2(MAX_DOUBLE, MAX_DOUBLE)
     
     std::ostream& operator<< (std::ostream& str, const v2& v);
     
@@ -315,7 +315,7 @@ namespace N2D
         
         bool intersects(Line_segment& line) const
         {
-            return line.dist_to(center()) - radius < 0;
+            return line.dist_to(center()) - radius() < 0;
         }
         
         /* determines if this sphere and other are neighbors by checking their distance( < tolerance ). */

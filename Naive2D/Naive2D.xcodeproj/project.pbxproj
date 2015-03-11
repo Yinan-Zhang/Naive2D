@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B3032F281AB0D4E400378DDB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3032F271AB0D4E400378DDB /* main.cpp */; };
+		B3032F351AB0EBCF00378DDB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3032F341AB0EBCF00378DDB /* OpenGL.framework */; };
+		B3032F371AB0EBD400378DDB /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3032F361AB0EBD400378DDB /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,9 @@
 		B3032F2E1AB0D55600378DDB /* geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		B3032F2F1AB0D55600378DDB /* GJK_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJK_utility.h; sourceTree = "<group>"; };
 		B3032F321AB0DD7100378DDB /* polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = polygon.h; sourceTree = "<group>"; };
+		B3032F331AB0E38E00378DDB /* render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
+		B3032F341AB0EBCF00378DDB /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		B3032F361AB0EBD400378DDB /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3032F371AB0EBD400378DDB /* GLUT.framework in Frameworks */,
+				B3032F351AB0EBCF00378DDB /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,8 @@
 		B3032F1B1AB0D4E400378DDB = {
 			isa = PBXGroup;
 			children = (
+				B3032F361AB0EBD400378DDB /* GLUT.framework */,
+				B3032F341AB0EBCF00378DDB /* OpenGL.framework */,
 				B3032F261AB0D4E400378DDB /* Naive2D */,
 				B3032F251AB0D4E400378DDB /* Products */,
 			);
@@ -64,6 +73,7 @@
 				B3032F2E1AB0D55600378DDB /* geometry.h */,
 				B3032F2F1AB0D55600378DDB /* GJK_utility.h */,
 				B3032F271AB0D4E400378DDB /* main.cpp */,
+				B3032F331AB0E38E00378DDB /* render.h */,
 			);
 			path = Naive2D;
 			sourceTree = "<group>";
@@ -238,6 +248,7 @@
 				B3032F2D1AB0D4E400378DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
