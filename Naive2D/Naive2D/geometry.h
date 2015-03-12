@@ -313,9 +313,17 @@ namespace N2D
             return dist < this->r_ + other.r_;
         }
         
+        /*Returns true if the sphere intersects with a given line.*/
         bool intersects(Line_segment& line) const
         {
             return line.dist_to(center()) - radius() < 0;
+        }
+        
+        /* Returns the distance between the sphere and point
+         */
+        bool dist_to(v2& point) const
+        {
+            return (center()-point).r()-radius();
         }
         
         /* determines if this sphere and other are neighbors by checking their distance( < tolerance ). */
