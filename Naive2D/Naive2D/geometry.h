@@ -245,7 +245,8 @@ namespace N2D
         double r_;
         SPHEREMETRIC metric;
         
-        explicit sphere(const v2& center, double radius, SPHEREMETRIC metric_ = SPHEREMETRIC::L2) : c_(center), r_(radius), metric(metric_) {}
+        explicit sphere(const v2& center=v2(0.0, 0.0), double radius=0.0, SPHEREMETRIC metric_ = SPHEREMETRIC::L2) : c_(center), r_(radius), metric(metric_) {}
+        sphere( const sphere& copy ):c_(copy.c_), r_(copy.r_), metric(copy.metric){}
         
         // Returns the center of the sphere
         const v2& center() const {return this->c_;}
@@ -321,9 +322,23 @@ namespace N2D
         
         /* Returns the distance between the sphere and point
          */
-        bool dist_to(v2& point) const
+        double dist_to(v2& point) const
         {
-            return (center()-point).r()-radius();
+            double dist;
+            switch (metric) {
+                case SPHEREMETRIC::L1:
+                    dist = (this->c_ - point).l1();
+                    break;
+                case SPHEREMETRIC::L2:
+                    dist = (this->c_ - point).r();
+                    break;
+                case SPHEREMETRIC::LINFTY:
+                    dist = (this->c_ - point).linfty();
+                    break;
+                default:
+                    throw "metric has to be l1, l2 or li.";
+            }
+            return dist-radius();
         }
         
         /* determines if this sphere and other are neighbors by checking their distance( < tolerance ). */
@@ -344,6 +359,14 @@ namespace N2D
                     throw "metric has to be l1, l2 or li.";
             }
             return (center_dist - this->r_ - other.r_) <= tolerance;
+        }
+        
+        sphere& operator=(const sphere& copy)
+        {
+            this->c_ = copy.c_;
+            this->r_ = copy.r_;
+            this->metric = copy.metric;
+            return *this;
         }
     };
     

@@ -108,7 +108,7 @@ namespace N2D {
             for(unsigned int i = 0; i < size; i++)
             {
                 Line_segment li(this->vertices[i], this->vertices[(i + 1) % size]);
-                double dist = li.dist_to(pt);
+                //double dist = li.dist_to(pt);
                 min = std::min(min, li.dist_to(pt));
             }
             return min;

@@ -75,6 +75,13 @@ namespace N2D {
             display_set = true;
         }
         
+        void set_keyboard_func( void (*func)(unsigned char, int, int) )
+        {
+            if(!window_initialized)
+                throw "Please initialize rendering then initalize window.";
+            glutKeyboardFunc(func);
+        }
+        
         void main_loop()
         {
             if(!window_initialized)
@@ -92,6 +99,13 @@ namespace N2D {
         void flush()
         {
             glFlush();
+        }
+        
+        // Scale the world
+        void scale_world( double x, double y )
+        {
+            glScaled(x, y, 1);
+            glTranslated( (1.0/x-1)/2.0, (1.0/y-1)/2.0, 1);
         }
         
         
