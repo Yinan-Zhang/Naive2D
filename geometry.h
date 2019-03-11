@@ -159,8 +159,8 @@ namespace N2D
         // Determine if two line segments intersects with each other
         bool intersects( const Line_segment& other ) const
         {
-            v2 A = this->start; v2 B = this->end;
-            v2 C = other.start; v2 D = other.end;
+            const v2& A = this->start; const v2& B = this->end;
+            const v2& C = other.start; const v2& D = other.end;
             return __ccw__(A,C,D) != __ccw__(B,C,D) && __ccw__(A,B,C) != __ccw__(A,B,D);
         }
 
@@ -207,18 +207,18 @@ namespace N2D
          */
         v2 intersection_point( const Line_segment& other ) const
         {
-            double x11 = this->start.x;
-            double y11 = this->start.y;
-            double x12 = this->end.x;
-            double y12 = this->end.y;
-            double x21 = other.start.x;
-            double y21 = other.start.y;
-            double x22 = other.end.x;
-            double y22 = other.end.y;
-            double dx1 = x12 - x11;
-            double dy1 = y12 - y11;
-            double dx2 = x22 - x21;
-            double dy2 = y22 - y21;
+            const double& x11 = this->start.x;
+            const double& y11 = this->start.y;
+            const double& x12 = this->end.x;
+            const double& y12 = this->end.y;
+            const double& x21 = other.start.x;
+            const double& y21 = other.start.y;
+            const double& x22 = other.end.x;
+            const double& y22 = other.end.y;
+            const double& dx1 = x12 - x11;
+            const double& dy1 = y12 - y11;
+            const double& dx2 = x22 - x21;
+            const double& dy2 = y22 - y21;
 
             double delta = dx2 * dy1 - dy2 * dx1;
             if (fabs(delta) < 0.0000001) return INFINITE_POINT; // parallel segments, no intersection
@@ -249,7 +249,7 @@ namespace N2D
         sphere( const sphere& copy ):c_(copy.c_), r_(copy.r_), metric(copy.metric){}
 
         // Returns the center of the sphere
-        v2& center() const {return this->c_;}
+        v2 center() const {return this->c_;}
         // Returns this radius of the sphere
         double radius() const { return this->r_; }
 
