@@ -10,26 +10,26 @@
 #include <chrono>
 #include "geometry.h"
 #include "polygon.h"
-//#include "render.h"
+#include "render.h"
 
 using namespace N2D;
 using namespace std::chrono;
 
-// void display()
-// {
-//     render::clean_screen();
+void display()
+{
+    render::clean_screen();
     
-//     sphere sphere1(v2(200, 200), 100, SPHEREMETRIC::L1);
-//     Line_segment line(v2(200,200), v2(400, 400));
-//     v2 points[] = {v2(100, 100), v2(100, 200), v2(200, 150)};
-//     Polygon poly( points, 3 );
+    sphere sphere1(v2(200, 200), 100, SPHEREMETRIC::L1);
+    Line_segment line(v2(200,200), v2(400, 400));
+    v2 points[] = {v2(100, 100), v2(100, 200), v2(200, 150)};
+    Polygon poly( points, 3 );
     
-//     render::sphere(sphere1, N2D::render::Color( 255, 0,0, 100 ));
-//     render::line_seg(line, N2D::render::Color( 0, 0, 255, 100 ));
-//     render::polygon(poly, N2D::render::Color( 0, 255, 0, 100 ));
+    render::sphere(sphere1, N2D::render::Color( 255, 0,0, 100 ));
+    render::line_seg(line, N2D::render::Color( 0, 0, 255, 100 ));
+    render::polygon(poly, N2D::render::Color( 0, 255, 0, 100 ));
     
-//     render::flush();
-// }
+    render::flush();
+}
 
 void performance_test(){
     v2 points1[] = {v2(0, 0), v2(10, 0), v2(10, 10), v2(0, 10)};
@@ -43,9 +43,10 @@ void performance_test(){
         rect1.intersects(rect2);
     }
     auto end = high_resolution_clock::now(); 
-    auto duration = duration_cast<microseconds>(end - start); 
+    auto duration = duration_cast<microseconds>(end - start) / milliseconds(1); 
     cout << N << " times collision check for two rectangles\n";
-    cout << duration.count() << " ms" << endl;
+    cout << duration << " ms" << endl;
+    cout << duration / double(N) << " ms per test." << endl;
 }
 
 int main(int argc, const char * argv[])
