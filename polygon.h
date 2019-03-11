@@ -23,7 +23,7 @@ namespace N2D {
         std::vector<v2> vertices;
         
         // Please make sure the order of these points are clockwise.
-        Polygon(std::vector<v2> points) : vertices(std::move(points)) { vertices.shrink_to_fit(); }
+        Polygon(std::vector<v2>&& points) : vertices(std::move(points)) { vertices.shrink_to_fit(); }
        
         // Please make sure the order of these points are clockwise.
         Polygon(const v2* points, int n) : vertices(points, points+n) { vertices.shrink_to_fit(); }
